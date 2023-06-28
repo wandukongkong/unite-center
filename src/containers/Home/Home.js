@@ -1,7 +1,8 @@
 import React from 'react'
+import {DataGrid} from '@mui/x-data-grid'
 
 import './Home.css'
-import Pokemon from '../../components/Pokemon'
+
 
 export default function Home() {
   return (

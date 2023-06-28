@@ -1,7 +1,5 @@
 import React from 'react'
 import {animated, useSpring, to, config} from '@react-spring/web'
-import {useGesture} from 'react-use-gesture'
-import _ from 'lodash'
 
 import './Pokemon.css'
 
