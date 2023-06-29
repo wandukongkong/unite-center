@@ -6,8 +6,9 @@ import {
     List,
     ListItem,
     ListItemButton,
-    ListItemText
+    ListItemText,
 } from '@mui/material'
+import {FaBars} from 'react-icons/fa6'
 
 import './Header.css'
 
@@ -38,10 +39,10 @@ const Header = () => {
     return (
         <div className='header'>
             <Fragment key={'left'}>
-                <Button variant='outlined'
+                <Button variant='contained'
                     onClick={
                         () => setOpen(true)
-                }>Menu</Button>
+                }><FaBars></FaBars></Button>
                 <Drawer anchor='left'
                     open={oepn}
                     onClose={()=>setOpen(false)}>

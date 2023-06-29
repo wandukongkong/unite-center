@@ -1,5 +1,6 @@
 import React from 'react'
 import {Route, Routes} from 'react-router-dom'
+import SlideRoutes from 'react-slide-routes'
 
 import Home from './Home/Home'
 import RandomPick from './RandomPick/RandomPick'

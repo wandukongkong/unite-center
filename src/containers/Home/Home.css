@@ -1,5 +1,22 @@
-.container {
+.home-container {
     display: flex;
     flex:1;
-    background-color: yellow;
+    /* background-color: yellow; */
+    justify-content: center;
+    align-items: center;
+}
+
+.pokemon-center {
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('../../img/centre.png');
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.pokemon-center:hover{
+    transform: scale(1.1);
 }

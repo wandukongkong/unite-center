@@ -1,0 +1,30 @@
+.random-pick-container {
+    display: flex;
+    flex:1;
+    background-color: bisque;
+    flex-direction: column;
+}
+
+.random-pick-header {
+    flex:0;
+    justify-content: center;
+    align-items: center;
+    background-color: violet;
+}
+
+.random-pick-content {
+    display: flex;
+    flex-direction: column;
+    flex: 15;
+    padding: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.random-team-area{
+    display: flex;
+    width: 70%;
+    height: 100%;
+    border: 1px solid black;
+    flex-direction: row;
+} 
