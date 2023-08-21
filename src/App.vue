@@ -1,17 +1,6 @@
 <template>
-  <HelloWorld/>
+  <router-view />
 </template>
-
-<script >
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
 
 <style>
 #app {
@@ -20,11 +9,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
 }
 
-html, body{
+html,
+body {
   width: 100%;
   height: 100%;
   margin: 0;
