@@ -1,21 +1,21 @@
 <template>
-  <div class="container">
-    <img src="../assets/uniteCenterLogo.png" class="pokemon-center-logo" />
+  <div class="cus-container">
+    <img src="../assets/pokemon/uniteCenterLogo.png" class="pokemon-center-logo" />
     <div class="position-relative">
-      <img src="../assets/pokemoncenter.png" width="1200" height="800" />
-      <img class="object object-1" src="../assets/object1.png" />
-      <img class="object object-2" src="../assets/object2.png" />
-      <img class="object object-3" src="../assets/object3.png" />
-      <img class="object object-4" src="../assets/object4.png" />
-      <img class="object object-5" src="../assets/object5.png" />
-      <img class="object object-6" src="../assets/object6.png" />
-      <img class="object object-7" src="../assets/object7.png" />
+      <img src="../assets/pokemon/pokemoncenter.png" width="1200" height="800" />
+      <img class="object object-1" src="../assets/pokemon/object1.png" />
+      <img class="object object-2" src="../assets/pokemon/object2.png" />
+      <img class="object object-3" src="../assets/pokemon/object3.png" />
+      <img class="object object-4" src="../assets/pokemon/object4.png" />
+      <img class="object object-5" src="../assets/pokemon/object5.png" />
+      <img class="object object-6" src="../assets/pokemon/object6.png" />
+      <img class="object object-7" src="../assets/pokemon/object7.png" />
     </div>
   </div>
 </template>
 <script setup></script>
 <style>
-.container {
+.cus-container {
   width: 100%;
   height: 100%;
   display: flex;
