@@ -9,11 +9,16 @@
       <img class="object object-4" src="../assets/pokemon/object4.png" />
       <img class="object object-5" src="../assets/pokemon/object5.png" />
       <img class="object object-6" src="../assets/pokemon/object6.png" />
-      <img class="object object-7" src="../assets/pokemon/object7.png" />
+      <img class="object object-7" src="../assets/pokemon/object7.png" @click="router.push('randomPick')" />
     </div>
   </div>
 </template>
-<script setup></script>
+<script setup>
+import {useRouter} from 'vue-router';
+
+const router = useRouter();
+
+</script>
 <style>
 .cus-container {
   width: 100%;
@@ -21,7 +26,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fdbf7e;
 }
 
 .position-relative {

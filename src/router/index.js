@@ -1,15 +1,25 @@
 import { createRouter, createWebHistory } from "vue-router";
-import WelcomeLayout from "../views/WelcomeLayout.vue";
-import LoginLayout from "../views/LoginLayout.vue";
+import WelcomeView from "../views/WelcomeView.vue";
+import LoginView from "../views/LoginView.vue";
+import CheckView from "../views/CheckView.vue";
+import RandomPickView from "../views/RandomPickView.vue";
 
 const routes = [
   {
     path: "/",
-    component: WelcomeLayout,
+    component: WelcomeView,
   },
   {
     path: "/login",
-    component: LoginLayout,
+    component: LoginView,
+  },
+  {
+    path: "/check",
+    component: CheckView,
+  },
+  {
+    path: "/randomPick",
+    component: RandomPickView,
   },
 ];
 

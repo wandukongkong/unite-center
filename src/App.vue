@@ -3,15 +3,25 @@
 </template>
 
 <style>
+@font-face {
+  font-family: 'neodgm';
+  src: url('./assets/font/neodgm.ttf') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: neodgm;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   width: 100%;
   height: 100%;
+  background-color: #fdbf7e;
+  padding: 50px;
 }
+
 
 html,
 body {
