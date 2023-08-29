@@ -1,35 +1,26 @@
 <template>
-    <div class="h-100">
-        <div class="border border-0 mb-3">
-            <vue3-tags-input :tags="tags" placeholder="enter some user" @on-tags-changed="handleChangeTag" />
-        </div>
-
-        <!-- TODO: 기능 버튼 영역 Start -->
-        <div class="">
-        </div>
-        <!-- 기능 버튼 영역 End-->
-
-        <!-- TODO: 카드 영역 Start  -->
-        <div class="d-flex flex-fill h-75 justify-content-center align-items-between">
-            <div>
-                <div class="d-flex h-100">
-                    <PokemonCard v-model="isOpenCard" />
-                    <PokemonCard v-model="isOpenCard" />
-                    <PokemonCard v-model="isOpenCard" />
-                    <PokemonCard v-model="isOpenCard" />
-                    <PokemonCard v-model="isOpenCard" />
-                </div>
-                <div class="d-flex h-100">
-                    <PokemonCard v-model="isOpenCard" />
-                    <PokemonCard v-model="isOpenCard" />
-                    <PokemonCard v-model="isOpenCard" />
-                    <PokemonCard v-model="isOpenCard" />
-                    <PokemonCard v-model="isOpenCard" />
-                </div>
-            </div>
-        </div>
-        <!-- 카드 영역 End  -->
+  <div class="h-100">
+    <div class="border border-0 mb-2">
+      <vue3-tags-input limit="20" :tags="tags" placeholder="enter some user" @on-tags-changed="handleChangeTag" />
     </div>
+
+    <!-- TODO: 카드 영역 Start  -->
+    <div class="d-flex flex-column h-100 justify-content-start align-items-start">
+      <!-- TODO: 기능 버튼 영역 Start -->
+      <div class="d-flex mb-1">
+        <button class="btn border bg-light py-0 me-1">
+          전체 뒤집기
+        </button>
+      </div>
+      <!-- 기능 버튼 영역 End-->
+      <div class="d-flex flex-wrap">
+        <div v-for="tag in tags" :key="tag">
+          <PokemonCard v-model="isOpenCard" />
+        </div>
+      </div>
+    </div>
+    <!-- 카드 영역 End  -->
+  </div>
 </template>
 <script setup>
 import {toRef} from 'vue';
@@ -48,21 +39,21 @@ function handleChangeTag(e){
 
 <style lang="css">
 .v3ti {
-    flex: 1
+  flex: 1;
 }
 
 .v3ti .v3ti-tag {
-    background: #fc8829;
-    /*border: 1px solid #222222;*/
-    /*border-radius: 0;*/
+  background: #fc8829;
+  /*border: 1px solid #222222;*/
+  /*border-radius: 0;*/
 }
 
 .v3ti .v3ti-tag .v3ti-remove-tag {
-    color: #000000;
-    transition: color .3s;
+  color: #000000;
+  transition: color .3s;
 }
 
 .v3ti .v3ti-tag .v3ti-remove-tag:hover {
-    color: #ffffff;
+  color: #ffffff;
 }
 </style>

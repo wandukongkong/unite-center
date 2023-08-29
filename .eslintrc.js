@@ -29,6 +29,17 @@ module.exports = {
         multiline: "always",
       },
     ],
+    // "vue/html-indent": [
+    //   "error",
+    //   4,
+    //   {
+    //     attribute: 1,
+    //     baseIndent: 1,
+    //     closeBracket: 0,
+    //     alignAttributesVertically: true,
+    //     ignores: [],
+    //   },
+    // ],
     "vue/html-closing-bracket-spacing": ["error"],
     "vue/html-end-tags": ["error"],
     "vue/html-self-closing": [
