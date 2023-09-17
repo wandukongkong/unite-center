@@ -1,10 +1,13 @@
 <template>
   <div class="h-100">
-    {{ players.length }}
-    <div class="d-flex border border-0 mb-2">
+    {{ isAllOpen }}
+    <div class="d-flex border border-0 mb-2 align-items-center justify-content-center">
+      <div class="me-3">
+        {{ players.length }}/10
+      </div>
       <vue3-tags-input
         limit="10"
-        :tags="players"
+        :tags="tags"
         placeholder="enter some user"
         @on-tags-changed="collectPlayers"
         class="me-1 border border-dark"
@@ -12,16 +15,18 @@
       <button
         class="btn border border-dark go-button"
         :disabled="!(_.size(players) > 9)"
+        @click="shufflePlayer"
       >GO</button>
     </div>
-    <Transition>
-      <div
-        v-if="_.size(players) < 11"
-        class="d-flex flex-column h-100 justify-content-center align-items-center"
-      >
-        <Versus :players="players" />
-      </div>
-    </Transition>
+    <div
+      v-if="_.size(players) < 11"
+      class="d-flex h-100 justify-content-center align-items-center"
+    >
+      <Versus
+        :players="players"
+        :isAllOpen="isAllOpen"
+      />
+    </div>
   </div>
 </template>
   
@@ -31,12 +36,20 @@ import Vue3TagsInput from 'vue3-tags-input';
 import _ from 'lodash';
 
 const players = toRef([]);
-const step = toRef(0);
+const tags = toRef([]);
+const isAllOpen = toRef(false);
 
 // TODO: 맴버수에 따라 팀 결정
 function collectPlayers(tags) {
 	players.value = tags;
-	console.log(tags);
+}
+
+function shufflePlayer() {
+	players.value = _.shuffle(players.value);
+
+	setTimeout(() => {
+		isAllOpen.value = true;
+	}, 100);
 }
 </script>
 
