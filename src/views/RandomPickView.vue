@@ -86,5 +86,6 @@ function shufflePlayer() {
 .go-button {
 	color: white !important;
 	background-color: #fc8829 !important;
+	padding-bottom: 3.5px !important;
 }
 </style>
