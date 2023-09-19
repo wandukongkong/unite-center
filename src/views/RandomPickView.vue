@@ -1,8 +1,10 @@
 <template>
   <div class="h-100">
-    {{ isAllOpen }}
     <div class="d-flex border border-0 mb-2 align-items-center justify-content-center">
-      <div class="me-3">
+      <div
+        class="me-3"
+        style="min-width: 50px"
+      >
         {{ players.length }}/10
       </div>
       <vue3-tags-input
@@ -24,6 +26,8 @@
     >
       <Versus
         :players="players"
+        :aTeamPokemonList="aTeamPokemonList"
+        :bTeamPokemonList="bTeamPokemonList"
         :isAllOpen="isAllOpen"
       />
     </div>
@@ -31,11 +35,16 @@
 </template>
   
 <script setup>
-import { toRef } from 'vue';
+import { toRef, onMounted } from 'vue';
 import Vue3TagsInput from 'vue3-tags-input';
 import _ from 'lodash';
+import pokemonList from '../../pokemon.json';
 
+console.log('@@ here ==>', pokemonList);
 const players = toRef([]);
+const aTeamPokemonList = toRef([]);
+const bTeamPokemonList = toRef([]);
+
 const tags = toRef([]);
 const isAllOpen = toRef(false);
 
@@ -51,6 +60,11 @@ function shufflePlayer() {
 		isAllOpen.value = true;
 	}, 100);
 }
+
+onMounted(() => {
+	aTeamPokemonList.value = _.chain(pokemonList).shuffle().slice(0, 5).value();
+	bTeamPokemonList.value = _.chain(pokemonList).shuffle().slice(0, 5).value();
+});
 </script>
 
 <style lang="css">

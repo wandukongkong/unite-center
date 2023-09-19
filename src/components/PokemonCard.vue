@@ -19,19 +19,18 @@
       </div>
     </template>
     <template #back>
-      <div
-        class="d-flex flex-column justify-content-center align-items-center pokemon-card-back pokemon-card-border-back rounded-2"
-        style="background-color: rgb(34, 34, 34);"
-      >
+      <div class="d-flex flex-column justify-content-center align-items-center pokemon-card-back pokemon-card-border-back rounded-2">
         <div class="d-flex flex-grow-1">
           <img
             class="w-100 pattern border border-2 border-dark rounded-bottom-3"
-            src="https://unite.pokemon.com/images/pokemon/tyranitar/roster/roster-tyranitar-2x.png"
-            :style="{'backgroundColor': '#ce5fd3'}"
+            :src="props.pokemonInfo.image"
+            :style="{'backgroundColor': props.pokemonInfo.color}"
           />
         </div>
         <div class="d-flex flex-grow-1 w-100 align-items-center ps-3 text-white">
-          {{ props.player }}
+          <h6 class="mb-0">
+            {{ props.player }}
+          </h6>
         </div>
 
       </div>
@@ -53,6 +52,13 @@ const props = defineProps({
 	},
 	player: {
 		type: String,
+		default: '',
+	},
+	pokemonInfo: {
+		type: Object,
+		default: () => {
+			return {};
+		},
 	},
 });
 </script>
@@ -72,7 +78,7 @@ const props = defineProps({
 .pokemon-card-back {
 	width: 200px;
 	height: 300px;
-	/* background: linear-gradient(120deg, #aced5b); */
+	background-color: rgb(34, 34, 34);
 	box-shadow: 0px 2px 2px black;
 	position: relative;
 	border-width: 2px;

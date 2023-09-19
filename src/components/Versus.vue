@@ -2,30 +2,34 @@
   <div class="d-flex flex-column position-relative">
     <div class="d-flex my-2">
       <PokemonCard
-        v-for="aPlayer in aTeams"
-        :key="aPlayer"
+        v-for="(aPlayer, index) in aTeams"
+        :key="index"
         :player="aPlayer"
+        :pokemonInfo="aTeamPokemonList[index]"
         :isOpen=props.isAllOpen
       ></PokemonCard>
     </div>
-    <!-- <div
-      class="d-flex flex-fill w-100 h-100 justify-content-center align-items-center position-absolute"
-      v-if="_.size(props.players) > 9"
-    >
-      <img
-        class="z-3"
-        src="../assets/img/22591751.png"
-        height="100"
+    <!-- <Transition>
+      <div
+        class="d-flex flex-fill w-100 h-100 justify-content-center align-items-center position-absolute"
+        v-if="_.size(props.players) > 9"
       >
-    </div> -->
+        <img
+          class="z-3"
+          src="../assets/img/22591751.png"
+          height="100"
+        >
+      </div>
+    </Transition> -->
     <div
       class="d-flex my-2"
       v-if="_.size(bTeams) > 0"
     >
       <PokemonCard
-        v-for="aPlayer in bTeams"
-        :key="aPlayer"
-        :player="aPlayer"
+        v-for="(bPlayer, index) in bTeams"
+        :key="index"
+        :player="bPlayer"
+        :pokemonInfo="bTeamPokemonList[index]"
         :isOpen=props.isAllOpen
       ></PokemonCard>
     </div>
@@ -37,6 +41,19 @@ import { computed } from 'vue';
 
 const props = defineProps({
 	players: {
+		type: Array,
+		default: () => {
+			return [];
+		},
+	},
+	aTeamPokemonList: {
+		type: Array,
+		default: () => {
+			return [];
+		},
+	},
+	bTeamPokemonList: {
+		type: Array,
 		default: () => {
 			return [];
 		},
