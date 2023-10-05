@@ -3,7 +3,7 @@
     <div class="d-flex border border-0 mb-2 align-items-center justify-content-center">
       <div
         class="me-3"
-        style="min-width: 50px"
+        style="min-width: 50px; color:#b6611c !important;"
       >
         {{ tags.length }}/10
       </div>
@@ -78,7 +78,7 @@ onMounted(() => {});
 }
 
 .v3ti .v3ti-tag {
-	background: #fc8829;
+	background: #fc8829 !important;
 	/*border: 1px solid #222222;*/
 	/*border-radius: 0;*/
 }
