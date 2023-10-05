@@ -4,16 +4,10 @@
     "module": "esnext",
     "baseUrl": "./",
     "moduleResolution": "node",
+    "types": ["pinia-plugin-persist"],
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   }
 }

@@ -5,7 +5,7 @@
         class="me-3"
         style="min-width: 50px"
       >
-        {{ players.length }}/10
+        {{ tags.length }}/10
       </div>
       <vue3-tags-input
         limit="10"
@@ -36,35 +36,39 @@
   
 <script setup>
 import { toRef, onMounted } from 'vue';
+import { storeToRefs } from 'pinia';
 import Vue3TagsInput from 'vue3-tags-input';
 import _ from 'lodash';
+
+import { useRandomPickStore } from '../stores/randomPickStore';
 import pokemonList from '../../pokemon.json';
 
-console.log('@@ here ==>', pokemonList);
-const players = toRef([]);
+const { tags } = storeToRefs(useRandomPickStore());
+const { updateTags } = useRandomPickStore();
+const players = toRef([...tags.value]);
 const aTeamPokemonList = toRef([]);
 const bTeamPokemonList = toRef([]);
 
-const tags = toRef([]);
 const isAllOpen = toRef(false);
 
 // TODO: 맴버수에 따라 팀 결정
-function collectPlayers(tags) {
-	players.value = tags;
+function collectPlayers(itmes) {
+	updateTags(itmes);
+	players.value = [...itmes];
+	isAllOpen.value = false;
 }
 
+// TODO:
 function shufflePlayer() {
 	players.value = _.shuffle(players.value);
 
-	setTimeout(() => {
-		isAllOpen.value = true;
-	}, 100);
-}
-
-onMounted(() => {
 	aTeamPokemonList.value = _.chain(pokemonList).shuffle().slice(0, 5).value();
 	bTeamPokemonList.value = _.chain(pokemonList).shuffle().slice(0, 5).value();
-});
+
+	isAllOpen.value = true;
+}
+
+onMounted(() => {});
 </script>
 
 <style lang="css">
