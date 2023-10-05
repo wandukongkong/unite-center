@@ -54,6 +54,7 @@ const isAllOpen = toRef(false);
 // TODO: 맴버수에 따라 팀 결정
 function collectPlayers(itmes) {
 	updateTags(itmes);
+
 	players.value = [...itmes];
 	isAllOpen.value = false;
 }
