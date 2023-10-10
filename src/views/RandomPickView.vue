@@ -1,10 +1,7 @@
 <template>
   <div class="h-100">
     <div class="d-flex border border-0 mb-2 align-items-center justify-content-center">
-      <div
-        class="me-3"
-        style="min-width: 50px; color:#b6611c !important;"
-      >
+      <div class="me-3 total-area">
         {{ tags.length }}/10
       </div>
       <vue3-tags-input
@@ -22,7 +19,7 @@
     </div>
     <div
       v-if="_.size(players) < 11"
-      class="d-flex h-100 justify-content-center align-items-center"
+      class="d-flex h-100 justify-content-center versus-area"
     >
       <Versus
         :players="players"
@@ -106,5 +103,25 @@ onMounted(() => {});
 	color: white !important;
 	background-color: #fc8829 !important;
 	padding-bottom: 3.5px !important;
+}
+
+.total-area {
+	min-width: 50px;
+	color: #b6611c !important;
+}
+
+.versus-area {
+	align-items: center;
+}
+
+@media screen and (max-width: 576px) {
+	.total-area {
+		margin-left: 5px;
+		color: #b6611c !important;
+	}
+
+	.versus-area {
+		align-items: start !important;
+	}
 }
 </style>

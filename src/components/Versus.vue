@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex flex-column position-relative">
-    <div class="d-flex my-2">
+    <div class="d-flex my-2 team-area">
       <PokemonCard
         v-for="(aPlayer, index) in aTeams"
         :key="index"
@@ -22,7 +22,7 @@
       </div>
     </Transition> -->
     <div
-      class="d-flex my-2"
+      class="d-flex my-2 team-area"
       v-if="_.size(bTeams) > 0"
     >
       <PokemonCard
@@ -71,5 +71,11 @@ const bTeams = computed(() => {
 	return _.chain(props.players).chunk(5).nth(1).value();
 });
 </script> 
-<style></style>
+<style>
+@media screen and (max-width: 576px) {
+	.team-area {
+		margin: 0 !important;
+	}
+}
+</style>
   

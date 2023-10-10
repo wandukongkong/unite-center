@@ -1,5 +1,5 @@
 <template>
-	<router-view />
+  <router-view />
 </template>
 
 <style>
@@ -31,5 +31,23 @@ body {
 	width: 100%;
 	height: 100%;
 	margin: 0;
+}
+
+@media screen and (max-width: 576px) {
+	#app {
+		font-family: neodgm;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-align: center;
+		color: #376da3;
+		width: 100%;
+		height: 100%;
+		background-color: #fdbf7e;
+		padding: 5px;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
 }
 </style>

@@ -6,9 +6,8 @@
     />
     <div class="position-relative">
       <img
+        class="pokemon-center"
         src="../assets/img/pokemon/pokemoncenter.png"
-        width="1200"
-        height="800"
       />
       <img
         class="object object-1"
@@ -47,7 +46,7 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 </script>
-<style>
+<style lang="css">
 .cus-container {
 	width: 100%;
 	height: 100%;
@@ -63,6 +62,11 @@ const router = useRouter();
 .pokemon-center-logo {
 	position: absolute;
 	top: 15%;
+}
+
+.pokemon-center {
+	width: 1200px;
+	height: 800px;
 }
 
 .object-1 {
@@ -117,5 +121,67 @@ const router = useRouter();
 .object:hover {
 	cursor: pointer;
 	transform: scale(1.1);
+}
+
+/* Mobile - Landscape */
+@media screen and (max-width: 576px) {
+	.pokemon-center {
+		width: 380px;
+		height: 280px;
+	}
+
+	.object-1 {
+		position: absolute;
+		right: 26.7%;
+		top: 16%;
+		width: 22.9px;
+	}
+
+	.object-2 {
+		position: absolute;
+		right: 49.5%;
+		top: 20%;
+		width: 45px;
+	}
+
+	.object-3 {
+		position: absolute;
+		right: 66.5%;
+		top: 20%;
+		width: 44px;
+	}
+
+	.object-4 {
+		position: absolute;
+		right: 15.5%;
+		top: 62.8%;
+		width: 40px;
+	}
+
+	.object-5 {
+		position: absolute;
+		right: 16.4%;
+		top: 16.3%;
+		width: 36px;
+	}
+
+	.object-6 {
+		position: absolute;
+		right: 41.4%;
+		top: 15.8%;
+		width: 30px;
+	}
+
+	.object-7 {
+		position: absolute;
+		right: 77%;
+		top: 54.5%;
+		width: 47.5px;
+	}
+
+	.object:hover {
+		cursor: pointer;
+		transform: scale(1.1);
+	}
 }
 </style>

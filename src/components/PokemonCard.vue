@@ -2,9 +2,7 @@
   <vue-flip
     v-model="props.isOpen"
     :active-click="false"
-    width="200px"
-    height="300px"
-    class="m-1"
+    class="m-1 vue-flip"
   >
     <template #front>
       <div class="d-flex justify-content-center align-items-center pokemon-card-front rounded-2 p-1">
@@ -102,8 +100,51 @@ const props = defineProps({
 	color: #ffe700;
 	flex-direction: column;
 	border-radius: 5px;
+	height: 300px;
 }
 
-.pokemon-card-border-back {
+.vue-flip {
+	width: 200px;
+	height: 300px;
+}
+
+@media screen and (max-width: 576px) {
+	.vue-flip {
+		width: 70px;
+		height: 340px;
+	}
+
+	.pattern {
+		background-image: url('https://unite.pokemon.com/images/common/square-pattern-30.svg'),
+			linear-gradient(180deg, rgb(0, 0, 0, 0.3), rgba(0, 0, 0, 0) 38%);
+		background-size: 44px, auto;
+		background-color: transparent;
+		background-position: center, left top;
+		color: #ffe700;
+		flex-direction: column;
+		border-radius: 5px;
+	}
+
+	.pokemon-card-back {
+		width: 72px;
+		height: 340px;
+		background-color: rgb(34, 34, 34);
+		box-shadow: 0px 2px 2px black;
+		position: relative;
+		border-width: 2px;
+		cursor: default;
+	}
+
+	.pokemon-card-front {
+		width: 72px;
+		height: 340px;
+		background: linear-gradient(120deg, #e67318, #3d237c);
+		box-shadow: 0px 2px 2px black;
+		position: relative;
+		border-width: 2px;
+		transition: all 0.1s ease;
+		cursor: pointer;
+		cursor: default;
+	}
 }
 </style>
