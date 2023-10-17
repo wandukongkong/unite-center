@@ -1,5 +1,5 @@
 <template>
-  <div class="h-100">
+  <div class="">
     <div class="d-flex border border-0 mb-2 align-items-center justify-content-center">
       <div class="me-3 total-area">
         {{ tags.length }}/10
@@ -17,6 +17,18 @@
         @click="shufflePlayer"
       >GO</button>
     </div>
+    <Transition name="slide-fade">
+      <div
+        v-if="isOpenOption"
+        class="mt-3"
+      >
+        hi
+      </div>
+    </Transition>
+    <!-- <div @click="isOpenOption = !isOpenOption">
+      <div v-if="isOpenOption">▲</div>
+      <div v-else>▼</div>
+    </div> -->
     <div
       v-if="_.size(players) < 11"
       class="d-flex h-100 justify-content-center versus-area"
@@ -45,6 +57,7 @@ const { updateTags } = useRandomPickStore();
 const players = toRef([...tags.value]);
 const aTeamPokemonList = toRef([]);
 const bTeamPokemonList = toRef([]);
+const isOpenOption = toRef(false);
 
 const isAllOpen = toRef(false);
 
@@ -111,6 +124,7 @@ onMounted(() => {});
 }
 
 .versus-area {
+	padding-top: 250px;
 	align-items: center;
 }
 
@@ -121,7 +135,7 @@ onMounted(() => {});
 	}
 
 	.versus-area {
-		padding-top: 50%;
+		padding-top: 150px;
 		align-items: start !important;
 	}
 }

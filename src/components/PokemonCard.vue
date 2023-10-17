@@ -62,7 +62,7 @@ const props = defineProps({
 <style>
 .pokemon-card-front {
 	width: 200px;
-	height: 300px;
+	height: 100%;
 	background: linear-gradient(120deg, #e67318, #3d237c);
 	box-shadow: 0px 2px 2px black;
 	position: relative;
