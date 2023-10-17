@@ -121,6 +121,7 @@ onMounted(() => {});
 	}
 
 	.versus-area {
+		padding-top: 50%;
 		align-items: start !important;
 	}
 }

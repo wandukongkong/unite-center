@@ -20,7 +20,7 @@
       <div class="d-flex flex-column justify-content-center align-items-center pokemon-card-back pokemon-card-border-back rounded-2">
         <div class="d-flex flex-grow-1">
           <img
-            class="w-100 pattern border border-2 border-dark rounded-bottom-3"
+            class="w-100 pattern border border-2 border-dark rounded-bottom-3 pokemon-img"
             :src="props.pokemonInfo.image"
             :style="{'backgroundColor': props.pokemonInfo.color}"
           />
@@ -111,7 +111,11 @@ const props = defineProps({
 @media screen and (max-width: 576px) {
 	.vue-flip {
 		width: 70px;
-		height: 340px;
+		height: 150px;
+	}
+
+	.pokemon-img {
+		height: 100px;
 	}
 
 	.pattern {
@@ -127,7 +131,7 @@ const props = defineProps({
 
 	.pokemon-card-back {
 		width: 72px;
-		height: 340px;
+		height: 120px;
 		background-color: rgb(34, 34, 34);
 		box-shadow: 0px 2px 2px black;
 		position: relative;
@@ -137,7 +141,7 @@ const props = defineProps({
 
 	.pokemon-card-front {
 		width: 72px;
-		height: 340px;
+		height: 120px;
 		background: linear-gradient(120deg, #e67318, #3d237c);
 		box-shadow: 0px 2px 2px black;
 		position: relative;
