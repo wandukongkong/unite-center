@@ -74,7 +74,7 @@ const bTeams = computed(() => {
 <style>
 @media screen and (max-width: 576px) {
 	.team-area {
-		margin: -10 !important;
+		margin: 0 !important;
 	}
 }
 </style>
