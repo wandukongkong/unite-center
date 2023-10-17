@@ -30,7 +30,6 @@
             {{ props.player }}
           </h6>
         </div>
-
       </div>
     </template>
   </vue-flip>
@@ -69,7 +68,7 @@ const props = defineProps({
 	position: relative;
 	border-width: 2px;
 	transition: all 0.1s ease;
-	cursor: pointer;
+	/* cursor: pointer; */
 	cursor: default;
 }
 
@@ -91,6 +90,10 @@ const props = defineProps({
 	/* border: 1px solid rgb(58, 58, 58); */
 }
 
+.pokemon-img {
+	height: 100px;
+}
+
 .pattern {
 	background-image: url('https://unite.pokemon.com/images/common/square-pattern-30.svg'),
 		linear-gradient(180deg, rgb(0, 0, 0, 0.3), rgba(0, 0, 0, 0) 38%);
@@ -100,7 +103,7 @@ const props = defineProps({
 	color: #ffe700;
 	flex-direction: column;
 	border-radius: 5px;
-	height: 300px;
+	height: 270px;
 }
 
 .vue-flip {
