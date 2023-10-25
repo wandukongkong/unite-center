@@ -7,6 +7,7 @@ import router from "./router";
 
 import "bootstrap";
 import "./bootstrap/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 import PokemonCard from "./components/PokemonCard.vue";
 import Versus from "./components/Versus.vue";

@@ -25,10 +25,19 @@
         hi
       </div>
     </Transition>
-    <!-- <div @click="isOpenOption = !isOpenOption">
-      <div v-if="isOpenOption">▲</div>
-      <div v-else>▼</div>
-    </div> -->
+    <button
+      class="btn border-0"
+      @click="isOpenOption = !isOpenOption"
+    >
+      <i
+        v-if="isOpenOption"
+        class="bi bi-caret-up-fill"
+      ></i>
+      <i
+        v-else
+        class="bi bi-caret-down-fill"
+      ></i>
+    </button>
     <div
       v-if="_.size(players) < 11"
       class="d-flex h-100 justify-content-center versus-area"
