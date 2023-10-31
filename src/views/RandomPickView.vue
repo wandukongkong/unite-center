@@ -1,6 +1,6 @@
 <template>
-  <div class="">
-    <div class="d-flex border border-0 mb-2 align-items-center justify-content-center">
+  <div class="d-flex flex-column h-100">
+    <div class="d-flex border border-0 mb-2 justify-content-center align-items-center">
       <div class="me-3 total-area">
         {{ tags.length }}/10
       </div>
@@ -25,7 +25,7 @@
         hi
       </div>
     </Transition>
-    <button
+    <!-- <button
       class="btn border-0"
       @click="isOpenOption = !isOpenOption"
     >
@@ -37,10 +37,10 @@
         v-else
         class="bi bi-caret-down-fill"
       ></i>
-    </button>
+    </button> -->
     <div
       v-if="_.size(players) < 11"
-      class="d-flex h-100 justify-content-center versus-area"
+      class="d-flex flex-fill justify-content-center align-items-center versus-area"
     >
       <Versus
         :players="players"
@@ -133,7 +133,7 @@ onMounted(() => {});
 }
 
 .versus-area {
-	padding-top: 250px;
+	/* padding-top: 250px; */
 	align-items: center;
 }
 
@@ -144,7 +144,6 @@ onMounted(() => {});
 	}
 
 	.versus-area {
-		padding-top: 150px;
 		align-items: start !important;
 	}
 }
