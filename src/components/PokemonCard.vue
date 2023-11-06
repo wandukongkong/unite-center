@@ -1,38 +1,37 @@
 <template>
-  <vue-flip
-    v-model="props.isOpen"
-    :active-click="false"
-    class="m-1 vue-flip"
-  >
-    <template #front>
-      <div class="d-flex justify-content-center align-items-center pokemon-card-front rounded-2 p-1">
-        <img
-          class="w-50"
-          src="../assets/img/pokemon/uniteLogo.png"
-        />
-        <img
-          class="pokemon-card-border-front p-2 "
-          src="../assets/img/pokemon/cardBorder.png"
-        />
-      </div>
-    </template>
-    <template #back>
-      <div class="d-flex flex-column justify-content-center align-items-center pokemon-card-back pokemon-card-border-back rounded-2">
-        <div class="d-flex flex-grow-1">
-          <img
-            class="w-100 pattern border border-2 border-dark rounded-bottom-3 pokemon-img"
-            :src="props.pokemonInfo.image"
-            :style="{'backgroundColor': props.pokemonInfo.color}"
-          />
-        </div>
-        <div class="d-flex flex-grow-1 w-100 align-items-center ps-3 text-white">
-          <h6 class="mb-0">
-            {{ props.player }}
-          </h6>
-        </div>
-      </div>
-    </template>
-  </vue-flip>
+	<vue-flip v-model="props.isOpen" :active-click="false" class="m-1 vue-flip">
+		<template #front>
+			<div
+				class="d-flex justify-content-center align-items-center pokemon-card-front rounded-2 p-1"
+			>
+				<img class="w-50" src="../assets/img/pokemon/uniteLogo.png" />
+				<img
+					class="pokemon-card-border-front p-2"
+					src="../assets/img/pokemon/cardBorder.png"
+				/>
+			</div>
+		</template>
+		<template #back>
+			<div
+				class="d-flex flex-column justify-content-center align-items-center pokemon-card-back pokemon-card-border-back rounded-2"
+			>
+				<div class="d-flex flex-grow-1">
+					<img
+						class="w-100 pattern border border-2 border-dark rounded-bottom-3 pokemon-img"
+						:src="props.pokemonInfo.image"
+						:style="{ backgroundColor: props.pokemonInfo.color }"
+					/>
+				</div>
+				<div
+					class="d-flex flex-grow-1 w-100 align-items-center ps-3 text-white"
+				>
+					<h6 class="mb-0">
+						{{ props.player }}
+					</h6>
+				</div>
+			</div>
+		</template>
+	</vue-flip>
 </template>
 <script setup>
 import { defineProps } from 'vue';

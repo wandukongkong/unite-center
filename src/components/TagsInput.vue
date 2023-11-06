@@ -1,5 +1,9 @@
 <template>
-	<vue3-tags-input :tags="tags" :validate="customValidate" placeholder="enter some tags" />
+	<vue3-tags-input
+		:tags="tags"
+		:validate="customValidate"
+		placeholder="enter some tags"
+	/>
 </template>
 
 <script>
