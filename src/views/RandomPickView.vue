@@ -15,6 +15,9 @@ const bTeamPokemonList = toRef([]);
 const isOpenOption = toRef(false);
 const goButtonColor = toRef('#fc8829');
 
+const isOnlyPokemon = toRef(false);
+const isOnlyUser = toRef(true);
+
 const isAllOpen = toRef(false);
 
 // TODO: 맴버수에 따라 팀 결정
@@ -27,14 +30,14 @@ function collectPlayers(itmes) {
 
 // TODO:
 function shufflePlayer() {
-  players.value = _.shuffle(players.value);
+  if (!isOnlyPokemon.value) {
+    players.value = _.shuffle(players.value);
+  }
 
   if (shuffleMode.value === 'default') {
     aTeamPokemonList.value = _.chain(pokemonList).shuffle().slice(0, 5).value();
     bTeamPokemonList.value = _.chain(pokemonList).shuffle().slice(0, 5).value();
-
   } else {
-
     aTeamPokemonList.value = _.chain(pokemonList).filter(({ color }) => color === shuffleModeColor.value).shuffle().slice(0, 5).value();
     bTeamPokemonList.value = _.chain(pokemonList).filter(({ color }) => color === shuffleModeColor.value).shuffle().slice(0, 5).value();
   }
@@ -102,7 +105,7 @@ onMounted(() => { });
     <Transition name="slide-fade">
       <div v-if="isOpenOption" class="mt-3 position-absolute" style="left:35%; top:100px">
         <button class="btn border border-dark text-white mx-1 custom-button" @click="changeShuffleMode('default')"
-          style="background-color: #fc8829">Default</button>
+          style="background-color: #fc8829">Defailt</button>
         <button class="btn border border-dark text-white mx-1 custom-button" @click="changeShuffleMode('attack')"
           style="background-color: #f15438">Attack</button>
         <button class="btn border border-dark text-white mx-1 custom-button" @click="changeShuffleMode('defence')"
@@ -113,6 +116,16 @@ onMounted(() => { });
           style="background-color: #29a5e3">Speed</button>
         <button class="btn border border-dark text-white mx-1 custom-button" @click="changeShuffleMode('support')"
           style="background-color: #fecc51">Support</button>
+        <div class="d-flex">
+          <div class="mx-1 my-2">
+            <input v-model="isOnlyPokemon" type="checkbox" class="btn-check" id="onlyPokemon" autocomplete="off">
+            <label class="btn btn-outline-primary" for="onlyPokemon">Only Pokemon</label><br>
+          </div>
+          <!-- <div class="mx-1 my-2">
+            <input v-model="isOnlyUser" type="checkbox" class="btn-check" id="onlyUser" autocomplete="off">
+            <label class="btn btn-outline-primary" for="onlyUser">Only User</label><br>
+          </div> -->
+        </div>
       </div>
     </Transition>
 
