@@ -99,8 +99,8 @@ onMounted(() => { });
   <div class="d-flex flex-column h-100">
     <div class="d-flex border border-0 mb-2 justify-content-center align-items-center">
       <div class="me-3 total-area">{{ tags.length }}/10</div>
-      <vue3-tags-input limit="10" :tags="tags" placeholder="enter some user" @on-tags-changed="collectPlayers"
-        class="me-1 border border-dark" />
+      <vue3-tags-input limit="10" :tags="tags" :placeholder="tags.length === 10 ? '' : 'enter some user'"
+        @on-tags-changed="collectPlayers" class="me-1 border border-dark" />
       <button class="btn border border-dark text-white custom-button me-1"
         :style="{ 'background-color': shuffleModeColor, 'padding-bottom': '3.5px!important' }"
         :disabled="!(_.size(players) > 9)" @click="shufflePlayer">
