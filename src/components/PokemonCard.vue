@@ -1,30 +1,20 @@
 <template>
 	<vue-flip v-model="props.isOpen" :active-click="false" class="m-1 vue-flip">
 		<template #front>
-			<div
-				class="d-flex justify-content-center align-items-center pokemon-card-front rounded-2 p-1"
-			>
+			<div class="d-flex justify-content-center align-items-center pokemon-card-front rounded-2 p-1">
 				<img class="w-50" src="../assets/img/pokemon/uniteLogo.png" />
-				<img
-					class="pokemon-card-border-front p-2"
-					src="../assets/img/pokemon/cardBorder.png"
-				/>
+				<img class="pokemon-card-border-front p-2" src="../assets/img/pokemon/cardBorder.png" />
 			</div>
 		</template>
 		<template #back>
 			<div
 				class="d-flex flex-column justify-content-center align-items-center pokemon-card-back pokemon-card-border-back rounded-2"
-			>
+				@click="emit('click-card')">
 				<div class="d-flex flex-grow-1">
-					<img
-						class="w-100 pattern border border-2 border-dark rounded-bottom-3 pokemon-img"
-						:src="props.pokemonInfo.image"
-						:style="{ backgroundColor: props.pokemonInfo.color }"
-					/>
+					<img v-if="true" class="w-100 pattern border border-2 border-dark rounded-bottom-3 pokemon-img"
+						:src="props.pokemonInfo.image" :style="{ backgroundColor: props.pokemonInfo.color }" />
 				</div>
-				<div
-					class="d-flex flex-grow-1 w-100 align-items-center ps-3 text-white"
-				>
+				<div class="d-flex flex-grow-1 w-100 align-items-center ps-3 text-white">
 					<h6 class="mb-0">
 						{{ props.player }}
 					</h6>
@@ -37,6 +27,7 @@
 import { defineProps } from 'vue';
 import { VueFlip } from 'vue-flip';
 
+const emit = defineEmits(['click-card'])
 const props = defineProps({
 	imgUrl: {
 		type: String,
@@ -60,25 +51,35 @@ const props = defineProps({
 </script>
 <style>
 .pokemon-card-front {
-	width: 200px;
+	width: 230px;
 	height: 100%;
 	background: linear-gradient(120deg, #e67318, #3d237c);
 	box-shadow: 0px 2px 2px black;
 	position: relative;
 	border-width: 2px;
-	transition: all 0.1s ease;
 	/* cursor: pointer; */
 	cursor: default;
+	z-index: 0;
 }
 
 .pokemon-card-back {
-	width: 200px;
+	width: 230px;
 	height: 300px;
 	background-color: rgb(34, 34, 34);
 	box-shadow: 0px 2px 2px black;
 	position: relative;
 	border-width: 2px;
-	cursor: default;
+	cursor: pointer;
+	transition: transform 0.2s;
+	z-index: 0
+}
+
+.pokemon-card-back:hover {
+	transform: scale(1.02);
+}
+
+.pokemon-card-back:active {
+	transform: scale(0.99);
 }
 
 .pokemon-card-border-front {
@@ -106,7 +107,7 @@ const props = defineProps({
 }
 
 .vue-flip {
-	width: 200px;
+	width: 230px;
 	height: 300px;
 }
 
@@ -138,7 +139,6 @@ const props = defineProps({
 		box-shadow: 0px 2px 2px black;
 		position: relative;
 		border-width: 2px;
-		cursor: default;
 	}
 
 	.pokemon-card-front {
@@ -149,8 +149,6 @@ const props = defineProps({
 		position: relative;
 		border-width: 2px;
 		transition: all 0.1s ease;
-		cursor: pointer;
-		cursor: default;
 	}
 }
 </style>

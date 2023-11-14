@@ -30,6 +30,11 @@ export const useRandomPickStore = defineStore(
   {
     persist: {
       enabled: true,
+      strategies: [
+        {
+          storage: localStorage,
+        },
+      ],
     },
   }
 );
