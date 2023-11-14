@@ -12,7 +12,7 @@ const { updateTags, updateShuffleMode, updateShuffleModeColor } = useRandomPickS
 const players = toRef([...tags.value]);
 const aTeamPokemonList = toRef([]);
 const bTeamPokemonList = toRef([]);
-const isOpenOption = toRef(true);
+const isOpenOption = toRef(false);
 const goButtonColor = toRef('#fc8829');
 
 const isOnlyPokemon = toRef(false);
