@@ -1,7 +1,7 @@
 <template>
 	<vue-flip v-model="props.isOpen" :active-click="false" class="m-1 vue-flip">
 		<template #front>
-			<div class="d-flex justify-content-center align-items-center pokemon-card-front rounded-2 p-1">
+			<div class="d-flex justify-content-center align-items-center pokemon-card-front rounded-2 p-1 border border-dark">
 				<img class="w-50" src="../assets/img/pokemon/uniteLogo.png" />
 				<img class="pokemon-card-border-front p-2" src="../assets/img/pokemon/cardBorder.png" />
 			</div>
@@ -54,7 +54,7 @@ const props = defineProps({
 	width: 230px;
 	height: 100%;
 	background: linear-gradient(120deg, #e67318, #3d237c);
-	box-shadow: 0px 2px 2px black;
+	box-shadow: 0px 6px 4px rgb(0, 0, 0, 0.6);
 	position: relative;
 	border-width: 2px;
 	/* cursor: pointer; */
@@ -66,7 +66,7 @@ const props = defineProps({
 	width: 230px;
 	height: 300px;
 	background-color: rgb(34, 34, 34);
-	box-shadow: 0px 2px 2px black;
+	box-shadow: 0px 6px 4px rgb(0, 0, 0, 0.6);
 	position: relative;
 	border-width: 2px;
 	cursor: pointer;
@@ -84,9 +84,9 @@ const props = defineProps({
 
 .pokemon-card-border-front {
 	position: absolute;
-	width: 100%;
+	width: 95%;
 	height: 100%;
-	opacity: 0.8;
+	opacity: 0.5;
 	/* border: 1px solid rgb(58, 58, 58); */
 }
 
