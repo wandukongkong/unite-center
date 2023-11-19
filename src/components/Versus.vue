@@ -42,7 +42,8 @@ const bTeams = computed(() => {
 	<div class="d-flex flex-column position-relative">
 		<div class="d-flex my-2 team-area position-relative">
 			<Transition>
-				<img v-if="shuffleMode === 'king'" class="position-absolute z-1 king-image" src="../assets/img/king1.png">
+				<img v-if="shuffleMode === 'king' && isAllOpen" class="position-absolute z-1 king-image"
+					src="../assets/img/king1.png">
 			</Transition>
 			<transition-group>
 				<PokemonCard v-for="(aPlayer, index) in aTeams" :key="index" :player="aPlayer"
@@ -58,7 +59,8 @@ const bTeams = computed(() => {
 		</Transition>
 		<div class="d-flex my-2 team-area position-relative" v-if="_.size(bTeams) > 0">
 			<Transition>
-				<img v-if="shuffleMode === 'king'" class="position-absolute z-1 king-image" src="../assets/img/king1.png">
+				<img v-if="shuffleMode === 'king' && isAllOpen" class="position-absolute z-1 king-image"
+					src="../assets/img/king1.png">
 			</Transition>
 			<transition-group>
 				<PokemonCard v-for="(bPlayer, index) in bTeams" :key="index" :player="bPlayer"
