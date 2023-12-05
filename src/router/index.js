@@ -1,29 +1,29 @@
-import {
-  createRouter,
-  createWebHistory,
-  createWebHashHistory,
-} from "vue-router";
-import WelcomeView from "../views/WelcomeView.vue";
-import LoginView from "../views/LoginView.vue";
-import CheckView from "../views/CheckView.vue";
-import RandomPickView from "../views/RandomPickView.vue";
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
+import WelcomeView from '../views/WelcomeView.vue';
+import LoginView from '../views/LoginView.vue';
+import CheckView from '../views/CheckView.vue';
+import RandomPickView from '../views/RandomPickView.vue';
 
 const routes = [
   {
-    path: "/",
-    component: WelcomeView,
+    path: '/',
+    component: import('../views/WelcomeView.vue'),
   },
   {
-    path: "/login",
-    component: LoginView,
+    path: '/login',
+    component: import('../views/LoginView.vue'),
   },
   {
-    path: "/check",
-    component: CheckView,
+    path: '/check',
+    component: import('../views/CheckView.vue'),
   },
   {
-    path: "/randomPick",
-    component: RandomPickView,
+    path: '/randomPick',
+    component: import('../views/RandomPickView.vue'),
+  },
+  {
+    path: '/circle',
+    component: import('../views/CircleView.vue'),
   },
 ];
 

@@ -39,11 +39,44 @@ function shufflePlayer() {
     bTeamPokemonList.value = _.chain(pokemonList).shuffle().shuffle().slice(0, 5).value();
   } else if (shuffleMode.value === 'king') {
     //TODO:
-    aTeamPokemonList.value = [..._.chain(pokemonList).filter(({ color }) => color === '#fecc51').shuffle().slice(0, 1).value(), ..._.chain(pokemonList).filter(({ color }) => color === '#aced5b').shuffle().slice(0, 4).value()];
-    bTeamPokemonList.value = [..._.chain(pokemonList).filter(({ color }) => color === '#fecc51').shuffle().shuffle().slice(0, 1).value(), ..._.chain(pokemonList).filter(({ color }) => color === '#aced5b').shuffle().shuffle().slice(0, 4).value()];
+    aTeamPokemonList.value = [
+      ..._.chain(pokemonList)
+        .filter(({ color }) => color === '#fecc51')
+        .shuffle()
+        .slice(0, 1)
+        .value(),
+      ..._.chain(pokemonList)
+        .filter(({ color }) => color === '#aced5b')
+        .shuffle()
+        .slice(0, 4)
+        .value(),
+    ];
+    bTeamPokemonList.value = [
+      ..._.chain(pokemonList)
+        .filter(({ color }) => color === '#fecc51')
+        .shuffle()
+        .shuffle()
+        .slice(0, 1)
+        .value(),
+      ..._.chain(pokemonList)
+        .filter(({ color }) => color === '#aced5b')
+        .shuffle()
+        .shuffle()
+        .slice(0, 4)
+        .value(),
+    ];
   } else {
-    aTeamPokemonList.value = _.chain(pokemonList).filter(({ color }) => color === shuffleModeColor.value).shuffle().slice(0, 5).value();
-    bTeamPokemonList.value = _.chain(pokemonList).filter(({ color }) => color === shuffleModeColor.value).shuffle().shuffle().slice(0, 5).value();
+    aTeamPokemonList.value = _.chain(pokemonList)
+      .filter(({ color }) => color === shuffleModeColor.value)
+      .shuffle()
+      .slice(0, 5)
+      .value();
+    bTeamPokemonList.value = _.chain(pokemonList)
+      .filter(({ color }) => color === shuffleModeColor.value)
+      .shuffle()
+      .shuffle()
+      .slice(0, 5)
+      .value();
   }
 
   isAllOpen.value = true;
@@ -92,46 +125,91 @@ function changeShuffleMode(mode) {
   }
 }
 
-onMounted(() => { });
+onMounted(() => {});
 </script>
 
 <template>
   <div class="d-flex flex-column h-100">
     <div class="d-flex border border-0 mb-2 justify-content-center align-items-center">
       <div class="me-3 total-area">{{ tags.length }}/10</div>
-      <vue3-tags-input limit="10" :tags="tags" :placeholder="tags.length === 10 ? '' : 'enter some user'"
-        @on-tags-changed="collectPlayers" class="me-1 border border-dark" />
-      <button class="btn border border-dark text-white custom-button me-1"
+      <vue3-tags-input
+        limit="10"
+        :tags="tags"
+        :placeholder="tags.length === 10 ? '' : 'enter some user'"
+        @on-tags-changed="collectPlayers"
+        class="me-1 border border-dark"
+      />
+      <button
+        class="btn border border-dark text-white custom-button me-1"
         :style="{ 'background-color': shuffleModeColor, 'padding-bottom': '3.5px!important' }"
-        :disabled="!(_.size(players) > 9)" @click="shufflePlayer">
+        :disabled="!(_.size(players) > 9)"
+        @click="shufflePlayer"
+      >
         GO
       </button>
-      <button class="btn border border-dark custom-button"
-        style="backgroundColor: #fcad58; padding-bottom: 3.5px!important" @click="isOpenOption = !isOpenOption">
+      <button
+        class="btn border border-dark custom-button"
+        style="backgroundcolor: #fcad58; padding-bottom: 3.5px !important"
+        @click="isOpenOption = !isOpenOption"
+      >
         <i class="bi bi-sliders"></i>
       </button>
     </div>
     <Transition name="slide-fade">
       <div v-if="isOpenOption" class="mt-3 position-absolute option-area">
-        <button class="btn border border-dark text-white m-1 custom-button" @click="changeShuffleMode('default')"
-          style="background-color: #fc8829">Defailt</button>
-        <button class="btn border border-dark text-white m-1 custom-button" @click="changeShuffleMode('attack')"
-          style="background-color: #f15438">Attack</button>
-        <button class="btn border border-dark text-white m-1 custom-button" @click="changeShuffleMode('defence')"
-          style="background-color: #aced5b">Defence</button>
-        <button class="btn border border-dark text-white m-1 custom-button" @click="changeShuffleMode('balance')"
-          style="background-color: #ce5fd3">Balance</button>
-        <button class="btn border border-dark text-white m-1 custom-button" @click="changeShuffleMode('speed')"
-          style="background-color: #29a5e3">Speed</button>
-        <button class="btn border border-dark text-white m-1 custom-button" @click="changeShuffleMode('support')"
-          style="background-color: #fecc51">Support</button>
-        <button class="btn border border-dark text-dark m-1 custom-button" @click="changeShuffleMode('king')"
-          style="background-color: #fef251"><img class="me-1 mb-1" src="../assets/img/king1.png" width="20"
-            height="17" />King</button>
+        <button
+          class="btn border border-dark text-white m-1 custom-button"
+          @click="changeShuffleMode('default')"
+          style="background-color: #fc8829"
+        >
+          Defailt
+        </button>
+        <button
+          class="btn border border-dark text-white m-1 custom-button"
+          @click="changeShuffleMode('attack')"
+          style="background-color: #f15438"
+        >
+          Attack
+        </button>
+        <button
+          class="btn border border-dark text-white m-1 custom-button"
+          @click="changeShuffleMode('defence')"
+          style="background-color: #aced5b"
+        >
+          Defence
+        </button>
+        <button
+          class="btn border border-dark text-white m-1 custom-button"
+          @click="changeShuffleMode('balance')"
+          style="background-color: #ce5fd3"
+        >
+          Balance
+        </button>
+        <button
+          class="btn border border-dark text-white m-1 custom-button"
+          @click="changeShuffleMode('speed')"
+          style="background-color: #29a5e3"
+        >
+          Speed
+        </button>
+        <button
+          class="btn border border-dark text-white m-1 custom-button"
+          @click="changeShuffleMode('support')"
+          style="background-color: #fecc51"
+        >
+          Support
+        </button>
+        <button
+          class="btn border border-dark text-dark m-1 custom-button"
+          @click="changeShuffleMode('king')"
+          style="background-color: #fef251"
+        >
+          <img class="me-1 mb-1" src="../assets/img/king1.png" width="20" height="17" />King
+        </button>
         <div class="d-flex">
           <div class="mx-1 my-2">
-            <input v-model="isOnlyPokemon" type="checkbox" class="btn-check" id="onlyPokemon" autocomplete="off">
-            <label class="btn btn-outline-primary" for="onlyPokemon">Only Pokemon</label><br>
+            <input v-model="isOnlyPokemon" type="checkbox" class="btn-check" id="onlyPokemon" autocomplete="off" />
+            <label class="btn btn-outline-primary" for="onlyPokemon">Only Pokemon</label><br />
           </div>
           <!-- <div class="mx-1 my-2">
             <input v-model="isOnlyUser" type="checkbox" class="btn-check" id="onlyUser" autocomplete="off">
@@ -142,8 +220,12 @@ onMounted(() => { });
     </Transition>
 
     <div v-if="_.size(players) < 11" class="d-flex flex-fill justify-content-center align-items-center versus-area">
-      <Versus :players="players" :aTeamPokemonList="aTeamPokemonList" :bTeamPokemonList="bTeamPokemonList"
-        :isAllOpen="isAllOpen" />
+      <Versus
+        :players="players"
+        :aTeamPokemonList="aTeamPokemonList"
+        :bTeamPokemonList="bTeamPokemonList"
+        :isAllOpen="isAllOpen"
+      />
     </div>
   </div>
 </template>
@@ -191,7 +273,7 @@ onMounted(() => { });
 .option-area {
   z-index: 999;
   left: 35%;
-  top: 80px
+  top: 80px;
 }
 
 .custom-button {
@@ -207,11 +289,11 @@ onMounted(() => { });
 }
 
 .custom-option-button {
-  transition: opacity 0.1s
+  transition: opacity 0.1s;
 }
 
 .custom-option-button {
-  transition: opacity 0.1s
+  transition: opacity 0.1s;
 }
 
 @media screen and (max-width: 576px) {
@@ -227,8 +309,7 @@ onMounted(() => { });
   .option-area {
     z-index: 999;
     left: 0;
-    top: 100px
+    top: 100px;
   }
-
 }
 </style>
