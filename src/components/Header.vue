@@ -3,7 +3,7 @@ import { toRef } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
-const isOpenMenu = toRef(true);
+const isOpenMenu = toRef(false);
 </script>
 <template>
   <div class="position-absolute w-100 start-0 top-0">

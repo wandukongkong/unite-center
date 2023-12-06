@@ -1,8 +1,10 @@
 <template>
   <Header></Header>
-  <router-view v-slot="{ Component }">
-    <component :is="Component" />
-  </router-view>
+  <Transition name="fade-back">
+    <router-view v-slot="{ Component }">
+      <component :is="Component" />
+    </router-view>
+  </Transition>
 </template>
 
 <style>
