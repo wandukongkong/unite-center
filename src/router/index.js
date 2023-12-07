@@ -3,27 +3,28 @@ import WelcomeView from '../views/WelcomeView.vue';
 import LoginView from '../views/LoginView.vue';
 import CheckView from '../views/CheckView.vue';
 import RandomPickView from '../views/RandomPickView.vue';
+import Circle from '../views/CircleView.vue';
 
 const routes = [
   {
     path: '/',
-    component: import('../views/WelcomeView.vue'),
+    component: WelcomeView,
   },
   {
     path: '/login',
-    component: import('../views/LoginView.vue'),
+    component: LoginView,
   },
   {
     path: '/check',
-    component: import('../views/CheckView.vue'),
+    component: CheckView,
   },
   {
     path: '/randomPick',
-    component: import('../views/RandomPickView.vue'),
+    component: RandomPickView,
   },
   {
     path: '/circle',
-    component: import('../views/CircleView.vue'),
+    component: Circle,
   },
 ];
 

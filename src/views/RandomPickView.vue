@@ -4,8 +4,8 @@ import { storeToRefs } from 'pinia';
 import Vue3TagsInput from 'vue3-tags-input';
 import _ from 'lodash';
 
-import { useRandomPickStore } from '../stores/randomPickStore';
-import pokemonList from '../../pokemon.json';
+import { useRandomPickStore } from '@/stores/randomPickStore';
+import pokemonList from '@/json/pokemon.json';
 
 const { tags, shuffleMode, shuffleModeColor } = storeToRefs(useRandomPickStore());
 const { updateTags, updateShuffleMode, updateShuffleModeColor } = useRandomPickStore();
@@ -130,12 +130,12 @@ onMounted(() => {});
   <div class="d-flex flex-column h-100">
     <div class="d-flex border border-0 mb-2 justify-content-center align-items-center">
       <div class="me-3 total-area">{{ tags.length }}/10</div>
-      <vue3-tags-input
+      <Vue3TagsInput
         limit="10"
         :tags="tags"
         :placeholder="tags.length === 10 ? '' : 'enter some user'"
-        @on-tags-changed="collectPlayers"
         class="me-1 border border-dark"
+        @on-tags-changed="collectPlayers"
       />
       <button
         class="btn border border-dark text-white custom-button me-1"
@@ -161,57 +161,57 @@ onMounted(() => {});
         <div>
           <button
             class="btn border border-dark text-white m-1 custom-button"
-            @click="changeShuffleMode('default')"
             style="background-color: #fc8829; width: 100px"
+            @click="changeShuffleMode('default')"
           >
             Defailt
           </button>
           <button
             class="btn border border-dark text-white m-1 custom-button"
-            @click="changeShuffleMode('attack')"
             style="background-color: #f15438; width: 100px"
+            @click="changeShuffleMode('attack')"
           >
             Attack
           </button>
           <button
             class="btn border border-dark text-white m-1 custom-button"
-            @click="changeShuffleMode('defence')"
             style="background-color: #aced5b; width: 100px"
+            @click="changeShuffleMode('defence')"
           >
             Defence
           </button>
           <button
             class="btn border border-dark text-white m-1 custom-button"
-            @click="changeShuffleMode('balance')"
             style="background-color: #ce5fd3; width: 100px"
+            @click="changeShuffleMode('balance')"
           >
             Balance
           </button>
           <button
             class="btn border border-dark text-white m-1 custom-button"
-            @click="changeShuffleMode('speed')"
             style="background-color: #29a5e3; width: 100px"
+            @click="changeShuffleMode('speed')"
           >
             Speed
           </button>
           <button
             class="btn border border-dark text-white m-1 custom-button"
-            @click="changeShuffleMode('support')"
             style="background-color: #fecc51; width: 100px"
+            @click="changeShuffleMode('support')"
           >
             Support
           </button>
           <button
             class="btn border border-dark text-dark m-1 custom-button"
-            @click="changeShuffleMode('king')"
             style="background-color: #fef251; width: 100px"
+            @click="changeShuffleMode('king')"
           >
             <img class="me-1 mb-1" src="../assets/img/king1.png" width="20" height="17" />King
           </button>
         </div>
         <div class="d-flex justify-content-center">
           <div class="mx-1 my-2">
-            <input v-model="isOnlyPokemon" type="checkbox" class="btn-check" id="onlyPokemon" autocomplete="off" />
+            <input id="onlyPokemon" v-model="isOnlyPokemon" type="checkbox" class="btn-check" autocomplete="off" />
             <label class="btn btn-outline-primary" for="onlyPokemon">Only Pokemon</label><br />
           </div>
           <!-- <div class="mx-1 my-2">
@@ -225,9 +225,9 @@ onMounted(() => {});
     <div v-if="_.size(players) < 11" class="d-flex flex-fill justify-content-center align-items-center versus-area">
       <Versus
         :players="players"
-        :aTeamPokemonList="aTeamPokemonList"
-        :bTeamPokemonList="bTeamPokemonList"
-        :isAllOpen="isAllOpen"
+        :a-team-pokemon-list="aTeamPokemonList"
+        :b-team-pokemon-list="bTeamPokemonList"
+        :is-all-open="isAllOpen"
       />
     </div>
   </div>
@@ -274,7 +274,7 @@ onMounted(() => {});
 }
 
 .option-area {
-  z-index: 999;
+  z-index: 900;
   left: 35%;
   top: 80px;
 }

@@ -1,11 +1,11 @@
 <script setup>
-import { toRef, watch } from 'vue';
+import { toRef } from 'vue';
 
 const searchInput = toRef('');
 const circleList = toRef([
   {
     circleName: 'Team Gaming Dymax',
-    bannerImageUrl: require('../assets/img/banner/gdx.jpg'),
+    bannerImageUrl: require('@/assets/img/banner/gdx.jpg'),
     bannerMaker: 'GDX_보돌',
     openTalkUrl: 'https://open.kakao.com/o/gGYeiaJf',
   },

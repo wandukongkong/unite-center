@@ -64,7 +64,7 @@ const isOpenMenu = toRef(false);
     </div>
   </Transition>
   <Transition name="fade-back">
-    <div v-if="isOpenMenu" class="side-bar-back position-absolute top-0 start-0"></div>
+    <div v-if="isOpenMenu" class="side-bar-back position-absolute top-0 start-0" @click="isOpenMenu = false"></div>
   </Transition>
 </template>
 <style>

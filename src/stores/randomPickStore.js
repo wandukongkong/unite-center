@@ -1,12 +1,12 @@
-import { defineStore } from "pinia";
-import { toRef } from "vue";
+import { defineStore } from 'pinia';
+import { toRef } from 'vue';
 
 export const useRandomPickStore = defineStore(
-  "randomPickStore",
+  'randomPickStore',
   () => {
     const tags = toRef([]);
-    const shuffleMode = toRef("default");
-    const shuffleModeColor = toRef("#fc8829");
+    const shuffleMode = toRef('default');
+    const shuffleModeColor = toRef('#fc8829');
 
     const updateTags = (tagsParam) => {
       tags.value = tagsParam;

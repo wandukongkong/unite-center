@@ -1,15 +1,15 @@
 <template>
   <div class="cus-container">
-    <img src="../assets/img/pokemon/uniteCenterLogo.png" class="pokemon-center-logo" />
+    <img src="@/assets/img/pokemon/uniteCenterLogo.png" class="pokemon-center-logo" />
     <div class="position-relative">
-      <img class="pokemon-center" src="../assets/img/pokemon/pokemoncenter.png" />
-      <img class="object object-1" src="../assets/img/pokemon/object1.png" />
-      <img class="object object-2" src="../assets/img/pokemon/object2.png" />
-      <img class="object object-3" src="../assets/img/pokemon/object3.png" />
-      <img class="object object-4" src="../assets/img/pokemon/object4.png" @click="router.push('/circle')" />
-      <img class="object object-5" src="../assets/img/pokemon/object5.png" />
-      <img class="object object-6" src="../assets/img/pokemon/object6.png" />
-      <img class="object object-7" src="../assets/img/pokemon/object7.png" @click="router.push('randomPick')" />
+      <img class="pokemon-center" src="@/assets/img/pokemon/pokemoncenter.png" />
+      <img class="object object-1" src="@/assets/img/pokemon/object1.png" />
+      <img class="object object-2" src="@/assets/img/pokemon/object2.png" />
+      <img class="object object-3" src="@/assets/img/pokemon/object3.png" />
+      <img class="object object-4" src="@/assets/img/pokemon/object4.png" @click="router.push('/circle')" />
+      <img class="object object-5" src="@/assets/img/pokemon/object5.png" />
+      <img class="object object-6" src="@/assets/img/pokemon/object6.png" />
+      <img class="object object-7" src="@/assets/img/pokemon/object7.png" @click="router.push('randomPick')" />
     </div>
   </div>
 </template>
