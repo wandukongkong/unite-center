@@ -20,7 +20,7 @@ const isOnlyUser = toRef(true);
 
 const isAllOpen = toRef(false);
 
-// TODO: 맴버수에 따라 팀 결정
+// 맴버수에 따라 팀 결정
 function collectPlayers(itmes) {
   updateTags(itmes);
 
@@ -28,7 +28,6 @@ function collectPlayers(itmes) {
   isAllOpen.value = false;
 }
 
-// TODO:
 function shufflePlayer() {
   if (!isOnlyPokemon.value) {
     players.value = _.shuffle(players.value);
@@ -38,7 +37,6 @@ function shufflePlayer() {
     aTeamPokemonList.value = _.chain(pokemonList).shuffle().slice(0, 5).value();
     bTeamPokemonList.value = _.chain(pokemonList).shuffle().shuffle().slice(0, 5).value();
   } else if (shuffleMode.value === 'king') {
-    //TODO:
     aTeamPokemonList.value = [
       ..._.chain(pokemonList)
         .filter(({ color }) => color === '#fecc51')
@@ -156,57 +154,62 @@ onMounted(() => {});
       </button>
     </div>
     <Transition name="slide-fade">
-      <div v-if="isOpenOption" class="mt-3 position-absolute option-area">
-        <button
-          class="btn border border-dark text-white m-1 custom-button"
-          @click="changeShuffleMode('default')"
-          style="background-color: #fc8829"
-        >
-          Defailt
-        </button>
-        <button
-          class="btn border border-dark text-white m-1 custom-button"
-          @click="changeShuffleMode('attack')"
-          style="background-color: #f15438"
-        >
-          Attack
-        </button>
-        <button
-          class="btn border border-dark text-white m-1 custom-button"
-          @click="changeShuffleMode('defence')"
-          style="background-color: #aced5b"
-        >
-          Defence
-        </button>
-        <button
-          class="btn border border-dark text-white m-1 custom-button"
-          @click="changeShuffleMode('balance')"
-          style="background-color: #ce5fd3"
-        >
-          Balance
-        </button>
-        <button
-          class="btn border border-dark text-white m-1 custom-button"
-          @click="changeShuffleMode('speed')"
-          style="background-color: #29a5e3"
-        >
-          Speed
-        </button>
-        <button
-          class="btn border border-dark text-white m-1 custom-button"
-          @click="changeShuffleMode('support')"
-          style="background-color: #fecc51"
-        >
-          Support
-        </button>
-        <button
-          class="btn border border-dark text-dark m-1 custom-button"
-          @click="changeShuffleMode('king')"
-          style="background-color: #fef251"
-        >
-          <img class="me-1 mb-1" src="../assets/img/king1.png" width="20" height="17" />King
-        </button>
-        <div class="d-flex">
+      <div
+        v-if="isOpenOption"
+        class="mt-3 position-absolute option-area w-100 start-0 d-flex justify-content-center flex-column"
+      >
+        <div>
+          <button
+            class="btn border border-dark text-white m-1 custom-button"
+            @click="changeShuffleMode('default')"
+            style="background-color: #fc8829; width: 100px"
+          >
+            Defailt
+          </button>
+          <button
+            class="btn border border-dark text-white m-1 custom-button"
+            @click="changeShuffleMode('attack')"
+            style="background-color: #f15438; width: 100px"
+          >
+            Attack
+          </button>
+          <button
+            class="btn border border-dark text-white m-1 custom-button"
+            @click="changeShuffleMode('defence')"
+            style="background-color: #aced5b; width: 100px"
+          >
+            Defence
+          </button>
+          <button
+            class="btn border border-dark text-white m-1 custom-button"
+            @click="changeShuffleMode('balance')"
+            style="background-color: #ce5fd3; width: 100px"
+          >
+            Balance
+          </button>
+          <button
+            class="btn border border-dark text-white m-1 custom-button"
+            @click="changeShuffleMode('speed')"
+            style="background-color: #29a5e3; width: 100px"
+          >
+            Speed
+          </button>
+          <button
+            class="btn border border-dark text-white m-1 custom-button"
+            @click="changeShuffleMode('support')"
+            style="background-color: #fecc51; width: 100px"
+          >
+            Support
+          </button>
+          <button
+            class="btn border border-dark text-dark m-1 custom-button"
+            @click="changeShuffleMode('king')"
+            style="background-color: #fef251; width: 100px"
+          >
+            <img class="me-1 mb-1" src="../assets/img/king1.png" width="20" height="17" />King
+          </button>
+        </div>
+        <div class="d-flex justify-content-center">
           <div class="mx-1 my-2">
             <input v-model="isOnlyPokemon" type="checkbox" class="btn-check" id="onlyPokemon" autocomplete="off" />
             <label class="btn btn-outline-primary" for="onlyPokemon">Only Pokemon</label><br />
