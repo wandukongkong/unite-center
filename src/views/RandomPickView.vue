@@ -39,25 +39,25 @@ function shufflePlayer() {
   } else if (shuffleMode.value === 'king') {
     aTeamPokemonList.value = [
       ..._.chain(pokemonList)
-        .filter(({ color }) => color === '#fecc51')
+        .filter(({ color }) => color === '#aced5b')
         .shuffle()
         .slice(0, 1)
         .value(),
       ..._.chain(pokemonList)
-        .filter(({ color }) => color === '#aced5b')
+        .filter(({ color }) => color === '#fecc51')
         .shuffle()
         .slice(0, 4)
         .value(),
     ];
     bTeamPokemonList.value = [
       ..._.chain(pokemonList)
-        .filter(({ color }) => color === '#fecc51')
+        .filter(({ color }) => color === '#aced5b')
         .shuffle()
         .shuffle()
         .slice(0, 1)
         .value(),
       ..._.chain(pokemonList)
-        .filter(({ color }) => color === '#aced5b')
+        .filter(({ color }) => color === '#fecc51')
         .shuffle()
         .shuffle()
         .slice(0, 4)

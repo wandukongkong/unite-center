@@ -7,7 +7,7 @@
       <img class="object object-2" src="@/assets/img/pokemon/object2.png" />
       <img class="object object-3" src="@/assets/img/pokemon/object3.png" />
       <img class="object object-4" src="@/assets/img/pokemon/object4.png" @click="router.push('/circle')" />
-      <img class="object object-5" src="@/assets/img/pokemon/object5.png" />
+      <img class="object object-5" src="@/assets/img/pokemon/object5.png" @click="router.push('/board')" />
       <img class="object object-6" src="@/assets/img/pokemon/object6.png" />
       <img class="object object-7" src="@/assets/img/pokemon/object7.png" @click="router.push('randomPick')" />
     </div>

@@ -4,6 +4,7 @@ import LoginView from '../views/LoginView.vue';
 import CheckView from '../views/CheckView.vue';
 import RandomPickView from '../views/RandomPickView.vue';
 import Circle from '../views/CircleView.vue';
+import Board from '../views/BoardView.vue';
 
 const routes = [
   {
@@ -25,6 +26,14 @@ const routes = [
   {
     path: '/circle',
     component: Circle,
+  },
+  {
+    path: '/circle',
+    component: Circle,
+  },
+  {
+    path: '/board',
+    component: Board,
   },
 ];
 
