@@ -2,12 +2,27 @@
 import { toRef, computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { UseDraggable } from '@vueuse/components';
+import { useDropZone } from '@vueuse/core';
+import { useElementBounding } from '@vueuse/core';
 
 import { useBoardStore } from '@/stores/boardStore';
 import pokemonList from '@/json/pokemon.json';
 
 const { selectedPokemonList } = storeToRefs(useBoardStore());
+const trashRef = toRef();
 const isOpenPokemonListTooltip = toRef(false);
+const isClickedCard = toRef(false);
+const { x: positionX, y: positionY } = useElementBounding(trashRef);
+const cardPositionX = toRef(0);
+const cardPositionY = toRef(0);
+const isOverTrashZone = computed(() => {
+  return (
+    cardPositionX.value + 50 > positionX.value &&
+    cardPositionX.value < positionX.value + 50 &&
+    cardPositionY.value + 50 > positionY.value &&
+    cardPositionY.value < positionY.value + 50
+  );
+});
 const pokemonCardList = computed(() => {
   return pokemonList.filter(({ name }) => !selectedPokemonList.value.map(({ name }) => name).includes(name));
 });
@@ -23,10 +38,15 @@ const addPokemonCard = (pokemonInfo) => {
 };
 
 const deletePokemonCard = (pokemonName) => {
-  selectedPokemonList.value = [...selectedPokemonList.value.filter(({ name }) => name !== pokemonName)];
+  if (isOverTrashZone.value && !isClickedCard.value) {
+    selectedPokemonList.value = [...selectedPokemonList.value.filter(({ name }) => name !== pokemonName)];
+  }
 };
 
 const clickPokemonCard = (pokemonName, x, y) => {
+  isClickedCard.value = false;
+  cardPositionX.value = x;
+  cardPositionY.value = y;
   selectedPokemonList.value = selectedPokemonList.value.map((selectedPokemonInfo) => {
     if (selectedPokemonInfo.name.toLowerCase() === pokemonName.toLowerCase()) {
       selectedPokemonInfo.position = {
@@ -97,15 +117,26 @@ const clickPokemonButton = () => {
         <div v-for="{ name, image, color, position } in selectedPokemonList" :key="pokemonName">
           <UseDraggable
             class="position-fixed"
+            style="z-index: 999"
             v-slot="{ x, y }"
             :initial-value="{ x: position?.x ?? 100, y: position?.y ?? 50 }"
           >
             <div
               class="pokemon-card border border-dark rounded position-relative"
-              @mouseup="() => clickPokemonCard(name, x, y)"
+              @mousedown="
+                () => {
+                  isClickedCard = true;
+                }
+              "
+              @mouseup="
+                () => {
+                  clickPokemonCard(name, x, y);
+                  deletePokemonCard(name);
+                }
+              "
             >
               <img class="pe-none rounded" :src="image" width="45" height="50" :style="{ 'background-color': color }" />
-              <div class="position-absolute" style="top: -12px; right: -10px">
+              <!-- <div class="position-absolute" style="top: -12px; right: -10px">
                 <button
                   class="btn bg-dark text-white rounded-5 p-0 align-middle text-center"
                   style="width: 19px; height: 19px; font-size: 12px"
@@ -113,9 +144,15 @@ const clickPokemonButton = () => {
                 >
                   x
                 </button>
-              </div>
+              </div> -->
             </div>
           </UseDraggable>
+        </div>
+      </div>
+      <!-- delete 관련 영역 -->
+      <div class="d-flex justify-content-end position-absolute bottom-0 w-100">
+        <div class="border border-dark bg-white" ref="trashRef" style="width: 50px; height: 50px; z-index: 0">
+          {{ isOverTrashZone }}/ {{ !isClickedCard }} {{}}
         </div>
       </div>
     </div>
