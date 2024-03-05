@@ -1,12 +1,14 @@
 <script setup>
 import { toRef, computed } from 'vue';
 import { storeToRefs } from 'pinia';
-import { UseDraggable } from '@vueuse/components';
-import { useDropZone } from '@vueuse/core';
 import { useElementBounding } from '@vueuse/core';
+import { Vue3Lottie } from 'vue3-lottie';
+import { useDrop } from 'vue3-dnd';
 
 import { useBoardStore } from '@/stores/boardStore';
 import pokemonList from '@/json/pokemon.json';
+import trashCan from '../assets/lottie/trashcan.json';
+import PokemonDragCard from '@/components/PokemonDragCard.vue';
 
 const { selectedPokemonList } = storeToRefs(useBoardStore());
 const trashRef = toRef();
@@ -15,6 +17,7 @@ const isClickedCard = toRef(false);
 const { x: positionX, y: positionY } = useElementBounding(trashRef);
 const cardPositionX = toRef(0);
 const cardPositionY = toRef(0);
+const trashCanRef = toRef();
 const isOverTrashZone = computed(() => {
   return (
     cardPositionX.value + 50 > positionX.value &&
@@ -26,6 +29,26 @@ const isOverTrashZone = computed(() => {
 const pokemonCardList = computed(() => {
   return pokemonList.filter(({ name }) => !selectedPokemonList.value.map(({ name }) => name).includes(name));
 });
+
+// drop
+const [, drop] = useDrop(() => ({
+  accept: 'box',
+  drop(item, monitor) {
+    const delta = monitor.getDifferenceFromInitialOffset();
+    const left = Math.round(item.left + delta.x);
+    const top = Math.round(item.top + delta.y);
+
+    // TODO: 해당 카드 갱신
+    selectedPokemonList.value = selectedPokemonList.value.map((selectedPokemonInfo) => {
+      if (selectedPokemonInfo?.name === item.pokemonName) {
+        selectedPokemonInfo.position.left = left;
+        selectedPokemonInfo.position.top = top;
+      }
+
+      return selectedPokemonInfo;
+    });
+  },
+}));
 
 const addPokemonCard = (pokemonInfo) => {
   pokemonInfo.position = {};
@@ -64,11 +87,11 @@ const clickPokemonButton = () => {
 </script>
 <template>
   <div class="d-flex flex-fill justify-content-center align-items-center w-100 h-100 position-relative">
-    <img src="../assets/img/pokemon/teia.png" class="h-75" style="object-fit: contain" />
+    <!-- <img src="../assets/img/pokemon/teia.png" class="h-75" style="object-fit: contain" /> -->
     <div class="position-absolute d-flex flex-fill w-100 h-100 opacity-1">
       <!-- <img v-for="{ image } in pokemonList" :src="image" height="30" /> -->
       <!-- 검색 영역 -->
-      <div class="d-flex justify-content-start align-items-start bg-warning w-100" style="height: 0">
+      <div class="d-flex justify-content-start align-items-start bg-warning w-100 z-1" style="height: 0">
         <!-- 포켓몬 추가  -->
         <div class="position-relative d-flex flex-column justify-content-center align-items-center w-100px">
           <button
@@ -113,46 +136,21 @@ const clickPokemonButton = () => {
         </div>
       </div>
       <!-- drage 영역 -->
-      <div class="">
-        <div v-for="{ name, image, color, position } in selectedPokemonList" :key="pokemonName">
-          <UseDraggable
-            class="position-fixed"
-            style="z-index: 999"
-            v-slot="{ x, y }"
-            :initial-value="{ x: position?.x ?? 100, y: position?.y ?? 50 }"
-          >
-            <div
-              class="pokemon-card border border-dark rounded position-relative"
-              @mousedown="
-                () => {
-                  isClickedCard = true;
-                }
-              "
-              @mouseup="
-                () => {
-                  clickPokemonCard(name, x, y);
-                  deletePokemonCard(name);
-                }
-              "
-            >
-              <img class="pe-none rounded" :src="image" width="45" height="50" :style="{ 'background-color': color }" />
-              <!-- <div class="position-absolute" style="top: -12px; right: -10px">
-                <button
-                  class="btn bg-dark text-white rounded-5 p-0 align-middle text-center"
-                  style="width: 19px; height: 19px; font-size: 12px"
-                  @click="deletePokemonCard(name)"
-                >
-                  x
-                </button>
-              </div> -->
-            </div>
-          </UseDraggable>
+      <div :ref="drop" class="w-100 h-100 position-absolute">
+        <div class="position-relative" v-for="{ name, color, image, position } in selectedPokemonList" :key="name">
+          <PokemonDragCard :pokemonName="name" :left="position?.left ?? 50" :top="position?.top ?? 50" />
         </div>
       </div>
       <!-- delete 관련 영역 -->
       <div class="d-flex justify-content-end position-absolute bottom-0 w-100">
-        <div class="border border-dark bg-white" ref="trashRef" style="width: 50px; height: 50px; z-index: 0">
-          {{ isOverTrashZone }}/ {{ !isClickedCard }} {{}}
+        <button @click="() => trashCanRef.playSegments([0, 38], true)">click</button>
+        <div
+          class="border border-dark d-flex justify-content-center align-items-center"
+          ref="trashRef"
+          style="width: 50px; height: 50px; z-index: 0"
+        >
+          <!-- {{ isOverTrashZone }}/ {{ !isClickedCard }} {{}} -->
+          <Vue3Lottie ref="trashCanRef" :animationData="trashCan" :autoPlay="false" :height="100" :width="100" />
         </div>
       </div>
     </div>

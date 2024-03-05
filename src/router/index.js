@@ -5,6 +5,7 @@ import CheckView from '../views/CheckView.vue';
 import RandomPickView from '../views/RandomPickView.vue';
 import Circle from '../views/CircleView.vue';
 import Board from '../views/BoardView.vue';
+import PokemonDragCard from '@/components/PokemonDragCard.vue';
 
 const routes = [
   {
@@ -34,6 +35,10 @@ const routes = [
   {
     path: '/board',
     component: Board,
+  },
+  {
+    path: '/test',
+    component: PokemonDragCard,
   },
 ];
 

@@ -1,11 +1,17 @@
 <template>
-  <Header></Header>
-  <Transition name="fade-back">
-    <router-view v-slot="{ Component }">
-      <component :is="Component" />
-    </router-view>
-  </Transition>
+  <DndProvider :backend="HTML5Backend">
+    <Header></Header>
+    <Transition name="fade-back">
+      <router-view v-slot="{ Component }">
+        <component :is="Component" />
+      </router-view>
+    </Transition>
+  </DndProvider>
 </template>
+<script setup>
+import { DndProvider } from 'vue3-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+</script>
 
 <style>
 @font-face {

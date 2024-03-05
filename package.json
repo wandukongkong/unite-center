@@ -18,9 +18,12 @@
     "lodash": "^4.17.21",
     "pinia": "^2.1.6",
     "pinia-plugin-persist": "^1.0.0",
+    "react-dnd-html5-backend": "^16.0.1",
     "vue": "^3.3.4",
     "vue-flip": "^3.0.2",
     "vue-router": "^4.0.3",
+    "vue3-dnd": "^2.1.0",
+    "vue3-lottie": "^3.2.0",
     "vue3-tags-input": "^1.0.12"
   },
   "devDependencies": {

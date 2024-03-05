@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
+import Vue3Lottie from 'vue3-lottie';
 import piniaPersist from 'pinia-plugin-persist';
 
 import App from './App.vue';
@@ -24,5 +25,6 @@ app.component('Header', Header);
 
 app.use(router);
 app.use(pinia);
+app.use(Vue3Lottie);
 
 app.mount('#app');
