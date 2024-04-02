@@ -35,18 +35,20 @@ const [, drop] = useDrop(() => ({
   accept: 'box',
   drop(item, monitor) {
     const delta = monitor.getDifferenceFromInitialOffset();
-    const left = Math.round(item.left + delta.x);
-    const top = Math.round(item.top + delta.y);
+    const left = Math.round(item?.left + delta?.x);
+    const top = Math.round(item?.top + delta?.y);
 
     // TODO: 해당 카드 갱신
-    selectedPokemonList.value = selectedPokemonList.value.map((selectedPokemonInfo) => {
-      if (selectedPokemonInfo?.name === item.pokemonName) {
-        selectedPokemonInfo.position.left = left;
-        selectedPokemonInfo.position.top = top;
-      }
+    selectedPokemonList.value = selectedPokemonList.value
+      .map((selectedPokemonInfo) => {
+        if (selectedPokemonInfo?.name === item?.pokemonName) {
+          selectedPokemonInfo.position.left = left;
+          selectedPokemonInfo.position.top = top;
+        }
 
-      return selectedPokemonInfo;
-    });
+        return selectedPokemonInfo;
+      })
+      .sort((a, b) => (b?.name === item?.pokemonName ? -1 : 1));
   },
 }));
 
@@ -87,7 +89,8 @@ const clickPokemonButton = () => {
 </script>
 <template>
   <div class="d-flex flex-fill justify-content-center align-items-center w-100 h-100 position-relative">
-    <!-- <img src="../assets/img/pokemon/teia.png" class="h-75" style="object-fit: contain" /> -->
+    {{ navigator }}
+    <img src="../assets/img/pokemon/teia.png" class="" style="object-fit: contain; height: 75%" />
     <div class="position-absolute d-flex flex-fill w-100 h-100 opacity-1">
       <!-- <img v-for="{ image } in pokemonList" :src="image" height="30" /> -->
       <!-- 검색 영역 -->
@@ -137,22 +140,28 @@ const clickPokemonButton = () => {
       </div>
       <!-- drage 영역 -->
       <div :ref="drop" class="w-100 h-100 position-absolute">
-        <div class="position-relative" v-for="{ name, color, image, position } in selectedPokemonList" :key="name">
-          <PokemonDragCard :pokemonName="name" :left="position?.left ?? 50" :top="position?.top ?? 50" />
+        <div v-for="{ name, color, image, position } in selectedPokemonList" :key="name">
+          <PokemonDragCard
+            :pokemonName="name"
+            :pokemonImgUrl="image"
+            :pokemonPositionColor="color"
+            :left="position?.left ?? 50"
+            :top="position?.top ?? 50"
+            @click-delete="(pokemonName) => deletePokemonCard(pokemonName)"
+          />
         </div>
       </div>
       <!-- delete 관련 영역 -->
-      <div class="d-flex justify-content-end position-absolute bottom-0 w-100">
+      <!-- <div class="d-flex justify-content-end position-absolute bottom-0 w-100">
         <button @click="() => trashCanRef.playSegments([0, 38], true)">click</button>
         <div
           class="border border-dark d-flex justify-content-center align-items-center"
           ref="trashRef"
           style="width: 50px; height: 50px; z-index: 0"
         >
-          <!-- {{ isOverTrashZone }}/ {{ !isClickedCard }} {{}} -->
           <Vue3Lottie ref="trashCanRef" :animationData="trashCan" :autoPlay="false" :height="100" :width="100" />
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

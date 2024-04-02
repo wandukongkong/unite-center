@@ -7,7 +7,7 @@ const circleList = toRef([
     circleName: 'Team Gaming Dymax',
     bannerImageUrl: require('@/assets/img/banner/gdx.jpg'),
     bannerMaker: 'GDX_보돌',
-    openTalkUrl: 'https://open.kakao.com/o/gGYeiaJf',
+    openTalkUrl: 'https://open.kakao.com/o/gZWOclXf',
   },
 ]);
 

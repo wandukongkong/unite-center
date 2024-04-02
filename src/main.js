@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import Vue3Lottie from 'vue3-lottie';
 import piniaPersist from 'pinia-plugin-persist';
+import VueMobileDetection from 'vue-mobile-detection';
 
 import App from './App.vue';
 import router from './router';
@@ -26,5 +27,6 @@ app.component('Header', Header);
 app.use(router);
 app.use(pinia);
 app.use(Vue3Lottie);
+app.use(VueMobileDetection);
 
 app.mount('#app');

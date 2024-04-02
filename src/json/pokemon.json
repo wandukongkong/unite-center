@@ -290,7 +290,7 @@
     "color": "#29a5e3"
   },
   {
-    "name": "Meowscarada",
+    "name": "Metagross",
     "image": "https://unite.pokemon.com/images/pokemon/metagross/roster/roster-metagross.png",
     "color": "#ce5fd3"
   },
@@ -298,5 +298,10 @@
     "name": "Gyarados",
     "image": "https://unite.pokemon.com/images/pokemon/gyarados/roster/roster-gyarados.png",
     "color": "#ce5fd3"
+  },
+  {
+    "name": "Miraidon",
+    "image": "https://unite.pokemon.com/images/pokemon/miraidon/roster/roster-miraidon.png",
+    "color": "#f16c38"
   }
 ]

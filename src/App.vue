@@ -1,6 +1,6 @@
 <template>
   <DndProvider :backend="HTML5Backend">
-    <Header></Header>
+    <Header v-if="!$isMobile()"></Header>
     <Transition name="fade-back">
       <router-view v-slot="{ Component }">
         <component :is="Component" />
