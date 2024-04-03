@@ -1,6 +1,6 @@
 <template>
-  <div class="cus-container">
-    <img src="@/assets/img/pokemon/uniteCenterLogo.png" class="pokemon-center-logo" />
+  <div class="cus-container d-flex flex-column">
+    <img src="@/assets/img/pokemon/uniteCenterLogo.png" />
     <div class="position-relative">
       <img class="pokemon-center" src="@/assets/img/pokemon/pokemoncenter.png" />
       <img class="object object-1" src="@/assets/img/pokemon/object1.png" />

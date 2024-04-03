@@ -8,6 +8,6 @@
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: #fdbf7e;
+  /* background-color: #fdbf7e; */
 }
 </style>

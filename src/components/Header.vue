@@ -14,8 +14,8 @@ const isOpenMenu = toRef(false);
     </div>
   </div>
   <Transition name="slide-menu-fade">
-    <div v-if="isOpenMenu" class="position-absolute top-0 start-0 side-bar">
-      <div class="d-flex justify-content-end mb-5">
+    <div v-if="isOpenMenu" class="position-absolute top-10 start-3 side-bar rounded-1 p-2 border border-5">
+      <div class="d-flex justify-content-end mb-4">
         <button class="btn border-0 shadow-none" @click="isOpenMenu = !isOpenMenu">x</button>
       </div>
       <div class="d-flex flex-column">
@@ -53,7 +53,7 @@ const isOpenMenu = toRef(false);
           "
         >
           <img src="../assets/img/icon/pokemoncircle.png" width="25" />
-          <span class="mx-2 mt-1 menu-font">Unite Circle</span>
+          <span class="mx-2 mt-1 menu-font">Circle</span>
         </button>
       </div>
       <div class="position-absolute bottom-0 center">
@@ -69,15 +69,26 @@ const isOpenMenu = toRef(false);
 </template>
 <style>
 .menu-font {
-  font-size: 20pt;
+  font-size: 24pt;
 }
 
 .side-bar {
-  width: 250px;
-  height: 100%;
+  width: 300px;
+  height: 50%;
+  min-height: 400px;
   z-index: 999;
-  background-color: #fec385;
+  background-color: white;
   box-shadow: 1px 1px 16px 0px #00000042;
+  border: 10px solid #d3c3e9 !important;
+  /* display: grid;
+  row-gap: 0;
+  column-gap: 0;
+  grid-template-columns: repeat(20, 20px);
+  grid-template-rows: repeat(11, 20px);
+
+  filter: drop-shadow(0 20px 0 #545454);
+
+  cursor: pointer; */
 }
 
 .side-bar-back {

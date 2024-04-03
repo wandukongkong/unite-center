@@ -12,6 +12,13 @@ const routes = [
   {
     path: '/',
     component: WelcomeView,
+    beforeEnter: (to, from, next) => {
+      if (!isMobile) {
+        next();
+      } else {
+        next('/randomPick');
+      }
+    },
   },
   {
     path: '/login',
@@ -33,6 +40,7 @@ const routes = [
   },
   {
     path: '/randomPick',
+    name: 'randomPick',
     component: RandomPickView,
     beforeEnter: (to, from, next) => {
       next();
